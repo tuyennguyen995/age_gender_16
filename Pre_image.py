@@ -50,7 +50,7 @@ if __name__ == "__main__":
     json_string = json_file.read()
     json_file.close()
     model = model_from_json(json_string)
-    model.load_weights("models/train/weights.10.h5")
+    model.load_weights("models/train/weights.30.h5")
     names = ["Nam (0-2)", "Nam (15-20)", "Nam (25-32)", "Nam (38-43)", "Nam (4-6)", "Nam (48-53)", "Nam (60-100)", "Nam (8-12)",
              "Nu (0-2)", "Nu (15-20)", "Nu (25-32)", "Nu (38-43)", "Nu (4-6)", "Nu (48-53)", "Nu (60-100)", "Nu (8-12)"]
 
@@ -89,13 +89,13 @@ if __name__ == "__main__":
                 b = a*2
                 dd2 = ((y2 - y1) - (x2 - x1))+int(a*0.65)
                 dd1 = int(dd2 / 2)+a
-                img = cv2.resize(img_load[y1 - a:y2 + b, x1 - dd1:x2 + dd2], (224, 224))
+                img = cv2.resize(img_load[y1 - a:y2 + b, x1 - dd1:x2 + dd2], (128, 128))
 
             except Exception as e:
                 print('Không nhận dạng được đối tượng')
                 dd2 = int(((y2 - y1) - (x2 - x1))*0.8)
                 dd1 = int(dd2 / 2)
-                img = cv2.resize(img_load[y1:y2,  x1 - dd1:x2 + dd2], (224, 224))
+                img = cv2.resize(img_load[y1:y2,  x1 - dd1:x2 + dd2], (128, 128))
                 plt.imshow(img)
                 plt.show()
 
