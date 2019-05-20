@@ -52,18 +52,20 @@ for dir_name in os.listdir(data_path):
                 else:
                     img = cv2.resize(img_load[y:y + h, x:x + w], (224, 224))
 
+                cv2.imwrite(result_path + "/" + file_name, img)
 
-                img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-                img = img / 255.
-                img_array = img_to_array(img)
-                img_array = img_array.reshape((1,) + img_array.shape)
 
-                for batch in datagen_src.flow(img_array,
-                                          batch_size=1,
-                                          save_to_dir=result_path,
-                                          save_prefix=os.path.splitext(file_name),
-                                          save_format='jpg'):
-                    break
+                # img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                # img = img / 255.
+                # img_array = img_to_array(img)
+                # img_array = img_array.reshape((1,) + img_array.shape)
+
+                # for batch in datagen_src.flow(img_array,
+                #                           batch_size=1,
+                #                           save_to_dir=result_path,
+                #                           save_prefix=os.path.splitext(file_name),
+                #                           save_format='jpg'):
+                #     break
 
         # counter = 0
         # for batch in datagen.flow(img_array,
